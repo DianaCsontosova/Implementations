@@ -1,0 +1,77 @@
+\RequirePackage{luatex85}
+
+\documentclass[preprint,prb,amsmath,superscriptaddress,showpacs]{revtex4}
+
+%\usepackage[utf8]{inputenc}
+% utf8 is not necessary once we use luatex engine
+
+\usepackage{graphics}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn} % Align table columns on decimal point
+\usepackage{bm}
+\usepackage{epsfig}
+\usepackage{physics}
+\usepackage[linktoc=all]{hyperref}
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{ bbold }
+\usepackage{pgf,tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{contour}
+
+\begin{document}
+\title{RPA susceptibility}
+
+\author{Diana Csontosová}
+%\email{kunes@ifp.tuwien.ac.at}
+%\affiliation{TU Wien}
+
+%\pacs{71.70.Ej,71.27.+a,75.40.Gb}
+\date{\today}
+
+\maketitle
+
+\section{Derivation}
+
+In order to obtain imaginary part of RPA dynamic susceptibility $\chi(\omega)$ we use thermal Green's function, which reads
+\begin{align}
+    \mathfrak{G}(\mathbf{k}, iE) = \frac{1}{iE - \varepsilon_{\mathbf{k}} - \Sigma(\mathbf{k}, iE)},
+\end{align}
+and we get
+\begin{equation}
+    \begin{gathered}
+    \mathrm{Im}(\chi) = \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE} \mathfrak{G}(\mathbf{k}+\mathbf{q}, iE + i\nu)\mathfrak{G}(\mathbf{k}, iE) \right]_{i\nu \rightarrow  \omega + i\delta} = \\
+    \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE} \frac{1}{iE + i\nu - \varepsilon_{\mathbf{k} + \mathbf{q}} - \Sigma(\mathbf{k} + \mathbf{q}, iE + i\nu)} \frac{1}{iE - \varepsilon_{\mathbf{k}} - \Sigma(\mathbf{k}, iE)} \right]_{i\nu \rightarrow \omega + i\delta},
+    \end{gathered}
+\end{equation}
+where we sum over fermionic Matsubara frequencies and $i\nu$ is bosonic Matsubara frequency. Here we sum function which can be written as
+\begin{align}
+    F(z) =& \frac{1}{z - z_1} \frac{1}{z - z_2} = \prod\limits_{z_j} \frac{1}{z - z_j,}
+ \end{align}
+ where
+ \begin{align*}
+    z_1 =& \varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\hbar \nu, \\
+    z_2 =& \varepsilon_{\mathbf{k}} + \Sigma.
+ \end{align*}
+ Note, that $\Sigma$ is in the framework of RPA approximation constant. For summing of function in such form we can use the summation rule
+ \begin{align}
+     \frac{1}{\beta} \sum_{iE} F(iE) = \sum_j n_F(z_j) \prod\limits_{j\neq j^{\prime}} \frac{1}{z_j - z_{j^{\prime}}},
+ \end{align}
+where $n_F$ is Fermi-Dirac distribution. Hence, we obtain
+
+\begin{align}
+       \mathrm{Im} (\chi) = \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu)}{\varepsilon_{\mathbf{k} + \mathbf{q}} + \Sigma - i \nu - \varepsilon_{\mathbf{k}} - \Sigma} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} + \Sigma - \varepsilon_{\mathbf{k}+\mathbf{q}} - \Sigma + i\nu}\right) \right]_{i\nu \rightarrow \omega + i\delta}.
+\end{align}
+According to periodicity of Matsubara frequencies we find that
+\begin{align*}
+    n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu) = \frac{1}{\exp{\beta (\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu)} + 1} = \frac{1}{\exp{\beta (\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)} + 1} = n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma).
+\end{align*}
+In this case the analytical continuation is rather straightforward. We only substitute $i\nu$ by $ \omega + i\delta$, where $\delta$ is infinitesimally small real number, and obtain final formula 
+\begin{equation}
+    \begin{gathered}
+    \mathrm{Im} (\chi(\omega)) = \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)}{\varepsilon_{\mathbf{k} + \mathbf{q}} + \Sigma - i\nu - \varepsilon_{\mathbf{k}} - \Sigma} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} + \Sigma - \varepsilon_{\mathbf{k}+\mathbf{q}} - \Sigma + i\nu} \right) \right]_{i\nu \rightarrow \omega + i\delta} = \\
+    \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)}{\varepsilon_{\mathbf{k} + \mathbf{q}} - \varepsilon_{\mathbf{k}} - \omega - i\delta} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} - \varepsilon_{\mathbf{k}+\mathbf{q}} + \omega + i\delta} \right) \right].
+    \end{gathered}
+\end{equation}
+
+\end{document}
