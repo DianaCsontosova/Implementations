@@ -33,45 +33,106 @@
 
 \section{Derivation}
 
-In order to obtain imaginary part of RPA dynamic susceptibility $\chi(\omega)$ we use thermal Green's function, which reads
-\begin{align}
-    \mathfrak{G}(\mathbf{k}, iE) = \frac{1}{iE - \varepsilon_{\mathbf{k}} - \Sigma(\mathbf{k}, iE)},
-\end{align}
+
+In order to obtain imaginary part of RPA dynamic susceptibility
+$\chi(\omega)$ we use Lehmann representation of Green's function, which reads
+%
+\begin{equation}
+    \mathfrak{G}(\mathbf{k}, iE) = \int \mathrm{d}E^{\prime}
+    \frac{A(\mathbf{k}, E^{\prime})}{iE - E^{\prime}},
+\end{equation}
+%
 and we get
+%
 \begin{equation}
     \begin{gathered}
     \mathrm{Im}(\chi) = \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE} \mathfrak{G}(\mathbf{k}+\mathbf{q}, iE + i\nu)\mathfrak{G}(\mathbf{k}, iE) \right]_{i\nu \rightarrow  \omega + i\delta} = \\
-    \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE} \frac{1}{iE + i\nu - \varepsilon_{\mathbf{k} + \mathbf{q}} - \Sigma(\mathbf{k} + \mathbf{q}, iE + i\nu)} \frac{1}{iE - \varepsilon_{\mathbf{k}} - \Sigma(\mathbf{k}, iE)} \right]_{i\nu \rightarrow \omega + i\delta},
+    \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE}  \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime}
+    \frac{A(\mathbf{k} + \mathbf{q}, E^{\prime})}{iE + i\nu - E^{\prime}}
+    \frac{A(\mathbf{k}, E^{\prime \prime})}{iE - E^{\prime \prime}}
+  \right]_{i\nu \rightarrow \omega + i\delta} = \\
+  \mathrm{Im}\left[ \frac{1}{\beta} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \sum_{iE}
+    \frac{1}{iE + i\nu - E^{\prime}}
+    \frac{1}{iE - E^{\prime \prime}}
+  \right]_{i\nu \rightarrow \omega + i\delta},
     \end{gathered}
-\end{equation}
-where we sum over fermionic Matsubara frequencies and $i\nu$ is bosonic Matsubara frequency. Here we sum function which can be written as
+  \end{equation}
+%
+where we sum over fermionic Matsubara frequencies and $i\nu$ is
+bosonic Matsubara frequency. Now, we focus on the summation over
+fermionic Matsubara frequencies of function $f(iE)$, where we substiture $iE$ for general complex
+variable $z$
+%
 \begin{align}
-    F(z) =& \frac{1}{z - z_1} \frac{1}{z - z_2} = \prod\limits_{z_j} \frac{1}{z - z_j,}
+    f(z) =& \frac{1}{z - z_1} \frac{1}{z - z_2} = \prod\limits_{z_j} \frac{1}{z - z_j,}
  \end{align}
+%
  where
+%
  \begin{align*}
-    z_1 =& \varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\hbar \nu, \\
-    z_2 =& \varepsilon_{\mathbf{k}} + \Sigma.
+    z_1 =& E^{\prime} - i\nu, \\
+    z_2 =& E^{\prime \prime}.
  \end{align*}
- Note, that $\Sigma$ is in the framework of RPA approximation constant. For summing of function in such form we can use the summation rule
+%
+For summing of function in such form we can use the summation rule
  \begin{align}
      \frac{1}{\beta} \sum_{iE} F(iE) = \sum_j n_F(z_j) \prod\limits_{j\neq j^{\prime}} \frac{1}{z_j - z_{j^{\prime}}},
  \end{align}
-where $n_F$ is Fermi-Dirac distribution. Hence, we obtain
-
-\begin{align}
-       \mathrm{Im} (\chi) = \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu)}{\varepsilon_{\mathbf{k} + \mathbf{q}} + \Sigma - i \nu - \varepsilon_{\mathbf{k}} - \Sigma} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} + \Sigma - \varepsilon_{\mathbf{k}+\mathbf{q}} - \Sigma + i\nu}\right) \right]_{i\nu \rightarrow \omega + i\delta}.
-\end{align}
-According to periodicity of Matsubara frequencies we find that
+Note, that function $n_F(z)$ is chosen to have poles in $iE$, thus, it is
+Fermi-Dirac distribution. Hence, we obtain
+%
+\begin{equation}
+       \mathrm{Im} (\chi) =  \mathrm{Im}\left[ \frac{1}{\beta} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
+        \frac{n_F(E^{\prime} - i\nu)}{E^{\prime} - i\nu - E^{\prime
+            \prime}} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
+            \prime} - E^{\prime} + i\nu}  \right)
+  \right]_{i\nu \rightarrow \omega + i\delta},
+\end{equation}
+%
+Due to the periodicity of Matsubara frequencies we find that
+%
 \begin{align*}
-    n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu) = \frac{1}{\exp{\beta (\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma - i\nu)} + 1} = \frac{1}{\exp{\beta (\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)} + 1} = n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma).
+    n_F(E^{\prime} - i\nu) = \frac{1}{\exp{\beta (E^{\prime} - i\nu)} + 1} = \frac{1}{\exp{\beta E^{\prime}} + 1} = n_F(E^{\prime}).
 \end{align*}
+%
 In this case the analytical continuation is rather straightforward. We only substitute $i\nu$ by $ \omega + i\delta$, where $\delta$ is infinitesimally small real number, and obtain final formula 
+%
 \begin{equation}
     \begin{gathered}
-    \mathrm{Im} (\chi(\omega)) = \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)}{\varepsilon_{\mathbf{k} + \mathbf{q}} + \Sigma - i\nu - \varepsilon_{\mathbf{k}} - \Sigma} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} + \Sigma - \varepsilon_{\mathbf{k}+\mathbf{q}} - \Sigma + i\nu} \right) \right]_{i\nu \rightarrow \omega + i\delta} = \\
-    \mathrm{Im}\left[ \frac{1}{\beta} \left( \frac{n_F(\varepsilon_{\mathbf{k}+\mathbf{q}} + \Sigma)}{\varepsilon_{\mathbf{k} + \mathbf{q}} - \varepsilon_{\mathbf{k}} - \omega - i\delta} + \frac{n_F(\varepsilon_{\mathbf{k}} + \Sigma)}{\varepsilon_{\mathbf{k}} - \varepsilon_{\mathbf{k}+\mathbf{q}} + \omega + i\delta} \right) \right].
+    \mathrm{Im} (\chi(\omega)) = \mathrm{Im}\left[ \frac{1}{\beta} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
+        \frac{n_F(E^{\prime})}{E^{\prime} - i\nu - E^{\prime
+            \prime}} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
+            \prime} - E^{\prime} + i\nu}  \right) \right]_{i\nu \rightarrow \omega + i\delta}  = \\
+    \mathrm{Im}\left[ \frac{1}{\beta} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
+        \frac{n_F(E^{\prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
+            \prime} - E^{\prime} + \omega +  i\delta}  \right)
+    \right] = \\
+     \frac{1}{\beta} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime})  \mathrm{Im}\left[
+        \frac{n_F(E^{\prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
+            \prime} - E^{\prime} + \omega +  i\delta} \right].
     \end{gathered}
 \end{equation}
+%
+Using RPA approximation we can further write spectral function
+$A(\mathbf{k}, E)$ as
+%
+\begin{equation}
+A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E)) =
+\frac{1}{\pi} \frac{-\mathrm{Im}(\Sigma)}{\left( E -
+    \varepsilon_{\mathbf{k}} + \mu - \mathrm{Re}(\Sigma) \right)^2 + (\mathrm{Im}(\Sigma))^2}.
+\end{equation}
+%
+Here, $\Sigma$ marks RPA self-energy.
 
 \end{document}
