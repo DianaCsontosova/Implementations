@@ -118,12 +118,50 @@ In this case the analytical continuation is rather straightforward. We only subs
     \right] = \\
      \frac{1}{\beta} \int \int
       \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime})  \mathrm{Im}\left[
-        \frac{n_F(E^{\prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
-            \prime} - E^{\prime} + \omega +  i\delta} \right].
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime})
+      \mathrm{Im} \left[
+        \frac{n_F(E^{\prime}) - n_F(E^{\prime \prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta}\right].
     \end{gathered}
 \end{equation}
 %
+To extract imaginary part of term in bracket we use Sokhotski–Plemelj
+theorem
+%
+\begin{equation}
+\lim_{\epsilon \rightarrow 0^{+}} \frac{1}{x \pm i\epsilon} = \pm
+i\pi\delta (x) + \mathcal{P}\left( \frac{1}{x} \right).
+\end{eqiation}
+%
+Applying the theorem we get
+%
+\begin{equation}
+    \begin{gathered}
+ \mathrm{Im} (\chi(\mathbf{q}, \omega)) =  \frac{1}{\beta} \sum_{\mathbf{k}} \int \int
+      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
+      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left[
+        n_F(E^{\prime \prime}) - n_F(E^{\prime}) \right] \pi
+      \delta(E^{\prime} - E^{\prime \prime} - \omega) = \\
+       \frac{1}{\beta} \sum_{\mathbf{k}} \int
+      \mathrm{d}E A(\mathbf{k} +
+      \mathbf{q}, E + \omega) A(\mathbf{k}, E) \left[
+        n_F(E) - n_F(E + \omega) \right].
+    \end{gathered}
+    \label{eq:final_susc}
+\end{equation}
+%
+In the last line of Eq.~\eqref{eq:final_susc} we recognize convolution. Note, that in order to get rid of dependence on $\mathbf{k}$-vector,
+we sum over BZ.
+
+The real part of susceptibility can be obtained by
+Kramers-Kroning relation
+%
+\begin{equation}
+\mathrm{Re} (\chi(\mathbf{q}, \omega)) = - \frac{1}{\pi} \int
+\mathrm{d} E \frac{\mathrm{Im} (\chi(\mathbf{q}, \omega))}{E - \omega}.
+\end{equation}
+%
+
+\iffalse
 Using RPA approximation we can further write spectral function
 $A(\mathbf{k}, E)$ as
 %
@@ -134,5 +172,6 @@ A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E))
 \end{equation}
 %
 Here, $\Sigma$ marks RPA self-energy.
+\fi
 
 \end{document}
