@@ -19,6 +19,10 @@
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{contour}
 
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bq}{\mathbf{q}}
+
+
 \begin{document}
 \title{RPA susceptibility}
 
@@ -29,135 +33,139 @@
 %\pacs{71.70.Ej,71.27.+a,75.40.Gb}
 \date{\today}
 
-\maketitle
+%\maketitle
 
 \section{Derivation}
 
 
-In order to obtain imaginary part of RPA dynamic susceptibility
-$\chi(\omega)$ we use Lehmann representation of Green's function, which reads
-%
-\begin{equation}
-    \mathfrak{G}(\mathbf{k}, iE) = \int \mathrm{d}E^{\prime}
-    \frac{A(\mathbf{k}, E^{\prime})}{iE - E^{\prime}},
-\end{equation}
-%
-and we get
-%
-\begin{equation}
-    \begin{gathered}
-    \mathrm{Im}(\chi) = \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE} \mathfrak{G}(\mathbf{k}+\mathbf{q}, iE + i\nu)\mathfrak{G}(\mathbf{k}, iE) \right]_{i\nu \rightarrow  \omega + i\delta} = \\
-    \mathrm{Im}\left[ \frac{1}{\beta} \sum_{iE}  \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime}
-    \frac{A(\mathbf{k} + \mathbf{q}, E^{\prime})}{iE + i\nu - E^{\prime}}
-    \frac{A(\mathbf{k}, E^{\prime \prime})}{iE - E^{\prime \prime}}
-  \right]_{i\nu \rightarrow \omega + i\delta} = \\
-  \mathrm{Im}\left[ \frac{1}{\beta} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \sum_{iE}
-    \frac{1}{iE + i\nu - E^{\prime}}
-    \frac{1}{iE - E^{\prime \prime}}
-  \right]_{i\nu \rightarrow \omega + i\delta},
-    \end{gathered}
-  \end{equation}
-%
-where we sum over fermionic Matsubara frequencies and $i\nu$ is
-bosonic Matsubara frequency. Now, we focus on the summation over
-fermionic Matsubara frequencies of function $f(iE)$, where we substiture $iE$ for general complex
-variable $z$
-%
-\begin{align}
-    f(z) =& \frac{1}{z - z_1} \frac{1}{z - z_2} = \prod\limits_{z_j} \frac{1}{z - z_j,}
- \end{align}
-%
- where
-%
- \begin{align*}
-    z_1 =& E^{\prime} - i\nu, \\
-    z_2 =& E^{\prime \prime}.
- \end{align*}
-%
-For summing of function in such form we can use the summation rule
- \begin{align}
-     \frac{1}{\beta} \sum_{iE} F(iE) = \sum_j n_F(z_j) \prod\limits_{j\neq j^{\prime}} \frac{1}{z_j - z_{j^{\prime}}},
- \end{align}
-Note, that function $n_F(z)$ is chosen to have poles in $iE$, thus, it is
-Fermi-Dirac distribution. Hence, we obtain
-%
-\begin{equation}
-       \mathrm{Im} (\chi) =  \mathrm{Im}\left[ \frac{1}{\beta} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
-        \frac{n_F(E^{\prime} - i\nu)}{E^{\prime} - i\nu - E^{\prime
-            \prime}} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
-            \prime} - E^{\prime} + i\nu}  \right)
-  \right]_{i\nu \rightarrow \omega + i\delta},
-\end{equation}
-%
-Due to the periodicity of Matsubara frequencies we find that
-%
-\begin{align*}
-    n_F(E^{\prime} - i\nu) = \frac{1}{\exp{\beta (E^{\prime} - i\nu)} + 1} = \frac{1}{\exp{\beta E^{\prime}} + 1} = n_F(E^{\prime}).
-\end{align*}
-%
-In this case the analytical continuation is rather straightforward. We only substitute $i\nu$ by $ \omega + i\delta$, where $\delta$ is infinitesimally small real number, and obtain final formula 
-%
-\begin{equation}
-    \begin{gathered}
-    \mathrm{Im} (\chi(\omega)) = \mathrm{Im}\left[ \frac{1}{\beta} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
-        \frac{n_F(E^{\prime})}{E^{\prime} - i\nu - E^{\prime
-            \prime}} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
-            \prime} - E^{\prime} + i\nu}  \right) \right]_{i\nu \rightarrow \omega + i\delta}  = \\
-    \mathrm{Im}\left[ \frac{1}{\beta} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left(
-        \frac{n_F(E^{\prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta} +  \frac{n_F(E^{\prime \prime})}{E^{\prime
-            \prime} - E^{\prime} + \omega +  i\delta}  \right)
-    \right] = \\
-     \frac{1}{\beta} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime})
-      \mathrm{Im} \left[
-        \frac{n_F(E^{\prime}) - n_F(E^{\prime \prime})}{E^{\prime} - E^{\prime \prime} - \omega - i\delta}\right].
-    \end{gathered}
-\end{equation}
-%
-To extract imaginary part of term in bracket we use Sokhotski–Plemelj
-theorem
-%
-\begin{equation}
-\lim_{\epsilon \rightarrow 0^{+}} \frac{1}{x \pm i\epsilon} = \pm
-i\pi\delta (x) + \mathcal{P}\left( \frac{1}{x} \right).
-\end{equation}
-%
-Applying the theorem we get
-%
-\begin{equation}
-    \begin{gathered}
- \mathrm{Im} (\chi(\mathbf{q}, \omega)) =  \frac{1}{\beta} \sum_{\mathbf{k}} \int \int
-      \mathrm{d}E^{\prime} \mathrm{d}E^{\prime \prime} A(\mathbf{k} +
-      \mathbf{q}, E^{\prime}) A(\mathbf{k}, E^{\prime \prime}) \left[
-        n_F(E^{\prime \prime}) - n_F(E^{\prime}) \right] \pi
-      \delta(E^{\prime} - E^{\prime \prime} - \omega) = \\
-       \frac{1}{\beta} \sum_{\mathbf{k}} \int
-      \mathrm{d}E A(\mathbf{k} +
-      \mathbf{q}, E + \omega) A(\mathbf{k}, E) \left[
-        n_F(E) - n_F(E + \omega) \right].
-    \end{gathered}
-    \label{eq:final_susc}
-\end{equation}
-%
-In the last line of Eq.~\eqref{eq:final_susc} we recognize convolution. Note, that in order to get rid of dependence on $\mathbf{k}$-vector,
-we sum over BZ.
+The dynamic susceptibility is given by the lattice Bethe Salpeter equation
+\begin{equation*}
+  \begin{split}
+    \chi(q)_{\nu\nu'}^{-1} &= \chi^{0 \, -1}(q)_{\nu\nu'} - \Gamma_{\bar{\nu''}\bar{\nu'''}}
+  \end{split}
+\end{equation*}
 
-The real part of susceptibility can be obtained by
-Kramers-Kroning relation
+Therefore, the dynamic susceptibility $\chi(\bq, \omega)$ can be calculated on the real
+frequency as soon as the quantities in the BSE above, i.e. the lattice bubble and the
+irreducible vertex, summed over fermionic frequencies, are also known
+on the real frequency axis. In the RPA regime, the irreducible vertex
+is a constant in frequency, it is therefore assumed to be known. The
+expression for the lattice bubble on the real frequency axis may be
+obtained analytically as follows.
+
+The Lehmann representation of the
+Green's function reads
+% 
+\begin{equation}
+  \mathfrak{G}(\mathbf{k}, i\nu_n) =
+  \int \mathrm{d}E^{\prime}
+  \frac{A(\mathbf{k}, E^{\prime})}{i\nu_n - E^{\prime}}.
+\end{equation}
+%
+This expression is inserted in the definition for the lattice bubble
+expressed on the Matsubara axis\cite{Boehnke2011, Kunes2011}:
 %
 \begin{equation}
-\mathrm{Re} (\chi(\mathbf{q}, \omega)) = - \frac{1}{\pi} \mathcal{P} \int
-\mathrm{d} E \frac{\mathrm{Im} (\chi(\mathbf{q}, \omega))}{E - \omega}.
+  \begin{aligned}
+      \chi^0(\bq, i\nu_n, i\nu_{n'}, i \omega_m) &=
+      - \sum_{\bk}
+      \mathfrak{G}(\bk, i\nu_n)
+      \mathfrak{G}(\bk + \bq, i\nu_{n'} + i\omega_m) \delta_{n n'} \\
+      &= - \iint
+      \mathrm{d}E'
+      \mathrm{d}E''
+      A(\bk, E') 
+      A(\bk + \bq, E'')
+      \dfrac{1}{i\nu_n - E'}
+      \dfrac{1}{i\nu_{n} + i \omega_m - E''}\delta_{n n'}.
+    \end{aligned}
+  \end{equation}
+  %
+Once we sum over fermionic frequencies, this becomes 
+%
+\begin{equation}
+  \begin{aligned}
+    \chi^0(\bq, i \omega_m) &=
+    - \sum_{\bk, \, i\nu_n}
+    \mathfrak{G}(\bk, i\nu_n)
+    \mathfrak{G}(\bk + \bq, i\nu_{n} + i\omega_m) \\
+    &= - \iint
+    \mathrm{d}E'
+    \mathrm{d}E''
+    \sum_{\bk} A(\bk, E') 
+      A(\bk + \bq, E'')
+      \sum_{i\nu_n}
+    \dfrac{1}{i\nu_n - E'}
+    \dfrac{1}{i\nu_{n} + i \omega_m - E''}.
+    \end{aligned}
+\end{equation}
+%
+The sum $\sum_{i\nu_n} \dfrac{1}{i\nu_n - E'} \dfrac{1}{i\nu_{n} + i
+  \omega_m - E''}.$ is a standard Matsubara frequency summation, whose
+expression can be found in the literature (e.g. Ref~\onlinecite{Mahan},
+eq. 3.5.2):
+\begin{equation}
+  \begin{aligned}
+    \label{eq:continuation}
+    \dfrac{1}{\beta} &
+    \sum_{i\nu_n}
+    \dfrac{1}{i\nu_n - E'}
+    \dfrac{1}{i\nu_{n} + i \omega_m - E''} =
+    \dfrac{n_F(E') - n_F(E'')}
+    {i\omega_m + E' - E''} \\
+    \chi^0(\bq, i \omega_m)
+    &= - \beta
+    \iint
+    \mathrm{d}E'
+    \mathrm{d}E''
+    \sum_{\bk} A(\bk, E') 
+    A(\bk + \bq, E'')
+    \dfrac{n_F(E') - n_F(E'')}
+    {i\omega_m + E' - E''} \\
+    \chi^0(\bq, \omega)
+    &= - \beta
+    \iint
+    \mathrm{d}E'
+    \mathrm{d}E''
+    \sum_{\bk} A(\bk, E') 
+    A(\bk + \bq, E'')
+    \dfrac{n_F(E') - n_F(E'')}
+    {\omega + E' - E'' + i\delta} \\
+    \end{aligned}
+\end{equation}
+where the analytical continuation is performed in the last step via the
+substitution $i\omega_m \rightarrow \omega + i\delta$, with $\delta$
+infinitesimal. The imaginary and real parts of the last expression in
+Eq.~\ref{eq:continuation} can be obtained using
+%To extract imaginary part of term in bracket we use Sokhotski–Plemelj
+%theorem
+%
+\begin{equation}
+  \lim_{\epsilon \rightarrow 0^{+}} \frac{1}{x \pm i\epsilon} = \mp
+  i\pi\delta (x) + \mathcal{P}\left( \frac{1}{x} \right):
+\end{equation}
+%
+%Applying the theorem we get
+\begin{equation}
+  \begin{aligned}
+    \Im \chi^0(\bq, \omega)
+    &= \pi \beta
+    \iint
+    \mathrm{d} E'
+    \sum_{\bk} A(\bk, E') 
+    A(\bk + \bq, E' + \omega)
+    \qty[n_F(E') - n_F(E' + \omega) ].
+    \end{aligned}
+\end{equation}
+This convolution in frequency and wavevector may be computed
+efficiently using FFT. The Kramers-Kroning relations may be used in
+order to obtain the real part of the bubble on the real frequency axis:
+%
+\begin{equation}
+  \Re \chi^0(\bq, \omega) =
+  \dfrac{1}{\pi} \mathcal{P}
+  \int_{-\infty}^{\infty}
+  \mathrm{d} \omega' \frac{\Im \chi^0(\bq, \omega)}{\omega' - \omega}.
 \end{equation}
 %
 
@@ -173,5 +181,7 @@ A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E))
 %
 Here, $\Sigma$ marks RPA self-energy.
 \fi
+
+\bibliography{library}
 
 \end{document}
