@@ -170,6 +170,17 @@ I_2 =& \int  \mathrm{d}E H(\mathbf{k} +
        \mathbf{q}, E + \omega) A(\mathbf{k}, E).
 \end{align*}
 %
+Due to the convolution theorem, we obtain the values of integrals as
+%
+\begin{equation}
+I = \{ A * H \}(\omega) = \mathcal{F}^{-1} \{ A^{\mathrm{FT}}
+\dotproduct H^{\mathrm{FT}} \}.
+\end{equation}
+%
+$\mathcal{F}^{-1}$ denotes inverse Fourier transform. Hence, instead of direct
+calculation of convolution, we use FFT and IFFT algorithms in the
+code.
+
 
 The real part of susceptibility can be obtained by
 Kramers-Kroning relation
