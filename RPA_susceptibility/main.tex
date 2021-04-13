@@ -150,7 +150,26 @@ Applying the theorem we get
 \end{equation}
 %
 In the last line of Eq.~\eqref{eq:final_susc} we recognize convolution. Note, that in order to get rid of dependence on $\mathbf{k}$-vector,
-we sum over BZ.
+we sum over BZ. Now, we focus on integrals in Eq.~\eqref{eq:final_susc}
+%
+\begin{align*}
+I_1 =& \int  \mathrm{d}E A(\mathbf{k} +
+       \mathbf{q}, E + \omega) A(\mathbf{k}, E) n_F(E), \\
+I_2 =& \int  \mathrm{d}E A(\mathbf{k} +
+       \mathbf{q}, E + \omega) A(\mathbf{k}, E) n_F(E+\omega),
+\end{align*}
+%
+where we identify convolution when we mark $H(\mathbf{k}, E) =
+A(\mathbf{k}, E) n_F(E)$ in $I_1$ and $H(\mathbf{k}+\mathbf{q}, E+\omega) =
+A(\mathbf{k} + \mathbf{q}, E + \omega) n_F(E+\omega)$ in $I_2$, thus
+%
+\begin{align*}
+I_1 =& \int  \mathrm{d}E A(\mathbf{k} +
+       \mathbf{q}, E + \omega) H(\mathbf{k}, E), \\
+I_2 =& \int  \mathrm{d}E H(\mathbf{k} +
+       \mathbf{q}, E + \omega) A(\mathbf{k}, E).
+\end{align*}
+%
 
 The real part of susceptibility can be obtained by
 Kramers-Kroning relation
