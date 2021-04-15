@@ -150,12 +150,25 @@ Applying the theorem we get
 \end{equation}
 %
 In the last line of Eq.~\eqref{eq:final_susc} we recognize convolution. Note, that in order to get rid of dependence on $\mathbf{k}$-vector,
-we sum over BZ. Now, we focus on integrals in Eq.~\eqref{eq:final_susc}
+we sum over BZ.
+
+The real part of susceptibility can be obtained by
+Kramers-Kroning relation
+%
+\begin{equation}
+\mathrm{Re} (\chi(\mathbf{q}, \omega)) = - \frac{1}{\pi} \mathcal{P} \int
+\mathrm{d} E \frac{\mathrm{Im} (\chi(\mathbf{q}, \omega))}{E - \omega}.
+\end{equation}
+%
+
+\newpage
+
+Now, we focus on terms in Eq.~\eqref{eq:final_susc}
 %
 \begin{align*}
-I_1 =& \int  \mathrm{d}E A(\mathbf{k} +
+I_1 =& \sum_{\mathbf{k}} \int  \mathrm{d}E A(\mathbf{k} +
        \mathbf{q}, E + \omega) A(\mathbf{k}, E) n_F(E), \\
-I_2 =& \int  \mathrm{d}E A(\mathbf{k} +
+I_2 =& \sum_{\mathbf{k}} \int  \mathrm{d}E A(\mathbf{k} +
        \mathbf{q}, E + \omega) A(\mathbf{k}, E) n_F(E+\omega),
 \end{align*}
 %
@@ -164,9 +177,9 @@ A(\mathbf{k}, E) n_F(E)$ in $I_1$ and $H(\mathbf{k}+\mathbf{q}, E+\omega) =
 A(\mathbf{k} + \mathbf{q}, E + \omega) n_F(E+\omega)$ in $I_2$, thus
 %
 \begin{align*}
-I_1 =& \int  \mathrm{d}E A(\mathbf{k} +
+I_1 =& \sum_{\mathbf{k}} \int  \mathrm{d}E A(\mathbf{k} +
        \mathbf{q}, E + \omega) H(\mathbf{k}, E), \\
-I_2 =& \int  \mathrm{d}E H(\mathbf{k} +
+I_2 =& \sum_{\mathbf{k}} \int  \mathrm{d}E H(\mathbf{k} +
        \mathbf{q}, E + \omega) A(\mathbf{k}, E).
 \end{align*}
 %
@@ -181,17 +194,6 @@ $\mathcal{F}^{-1}$ denotes inverse Fourier transform. Hence, instead of direct
 calculation of convolution, we use FFT and IFFT algorithms in the
 code.
 
-
-The real part of susceptibility can be obtained by
-Kramers-Kroning relation
-%
-\begin{equation}
-\mathrm{Re} (\chi(\mathbf{q}, \omega)) = - \frac{1}{\pi} \mathcal{P} \int
-\mathrm{d} E \frac{\mathrm{Im} (\chi(\mathbf{q}, \omega))}{E - \omega}.
-\end{equation}
-%
-
-\iffalse
 Using RPA approximation we can further write spectral function
 $A(\mathbf{k}, E)$ as
 %
@@ -202,6 +204,5 @@ A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E))
 \end{equation}
 %
 Here, $\Sigma$ marks RPA self-energy.
-\fi
 
 \end{document}
