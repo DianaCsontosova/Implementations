@@ -182,6 +182,6 @@ A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E))
 Here, $\Sigma$ marks RPA self-energy.
 \fi
 
-\bibliography{library}
+%\bibliography{library}
 
 \end{document}

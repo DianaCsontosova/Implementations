@@ -1,0 +1,89 @@
+\RequirePackage{luatex85}
+
+\documentclass[preprint,prb,amsmath,superscriptaddress,showpacs]{revtex4}
+
+%\usepackage[utf8]{inputenc}
+% utf8 is not necessary once we use luatex engine
+
+\usepackage{graphics}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn} % Align table columns on decimal point
+\usepackage{bm}
+\usepackage{epsfig}
+\usepackage{physics}
+\usepackage[linktoc=all]{hyperref}
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{ bbold }
+\usepackage{pgf,tikz}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{contour}
+
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bq}{\mathbf{q}}
+
+
+\begin{document}
+\title{RPA susceptibility}
+
+\author{Diana Csontosová}
+%\email{kunes@ifp.tuwien.ac.at}
+%\affiliation{TU Wien}
+
+%\pacs{71.70.Ej,71.27.+a,75.40.Gb}
+\date{\today}
+
+%\maketitle
+
+\section{Derivation}
+
+Here we derive the formula for bubble in paramegnetic state in
+two-dimensional square lattice with one atom per unit cell,
+considering one orbital per site.
+
+In general, we can define bubble on Matsubara axis summed over
+fermionic frequencies as
+%
+\begin{equation}
+      \chi^0(\bq, i \omega_m) =
+      - \frac{1}{N} \frac{1}{\beta} \sum_{\bk, i\nu} 
+      \mathfrak{G}(\bk, i\nu_n)
+      \mathfrak{G}(\bk + \bq, i\nu_{n} + i\omega_m).
+\end{equation}
+%
+Using bare Green's function and standard Matsubara frequency summation
+(see documentation for the derivation of RPA susceptibility) we get
+%
+\begin{equation}
+  \begin{aligned}
+  \chi^0(\bq, i \omega_m) &= - \frac{1}{N} \frac{1}{\beta} \sum_{\bk, i\nu_n} \frac{1}{i\nu_n +
+    i\omega_m - E_{\bk + \bq}} \frac{1}{i\nu_n - E_{\bk}} \\
+  &= - \frac{1}{N} \sum_{\bk} \frac{n_F (E_{\bk + \bq}) - n_F
+    (E_{\bk})}{E_{\bk + \bq} - E_{\bk} - i\omega_m}.
+  \end{aligned}
+\end{equation}
+In this case, we can easily perform the analytical continuation by
+substituting $i\omega_m \rightarrow \omega + i\delta$ and we obtain
+bubble on the real axis in the orbital basis
+%
+\begin{equation}
+  \begin{aligned}
+  \chi^0(\bq, \omega) &= - \frac{1}{N} \sum_{\bk} \frac{n_F (E_{\bk + \bq}) - n_F
+    (E_{\bk})}{E_{\bk + \bq} - E_{\bk} - \omega - i\delta}.
+  \end{aligned}
+\end{equation}
+%
+Taking into account the fact, that we consider model with one atom per
+unit cell and one orbital, transformation of bubble from the orbital basis to the physical
+basis is very
+simple (we are namely interested in component $\chi^0_{zz}$)
+%
+\begin{equation}
+  \chi^0_{zz} = \frac{1}{2} \left(\chi^0_{\downarrow} +
+    \chi^0_{\uparrow} \right).
+\end{equation}
+%
+Since we study paramagnatic state $\chi^0_{\downarrow} = \chi^0_{\uparrow}$.
+%\bibliography{library}
+
+\end{document}
