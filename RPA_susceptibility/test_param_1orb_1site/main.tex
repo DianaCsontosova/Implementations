@@ -18,6 +18,7 @@
 \usepackage{pgf,tikz}
 \usepackage[compat=1.1.0]{tikz-feynman}
 \usepackage{contour}
+\usepackage{amssymb}
 
 \newcommand{\bk}{\mathbf{k}}
 \newcommand{\bq}{\mathbf{q}}
@@ -63,13 +64,13 @@ Using bare Green's function and standard Matsubara frequency summation
   \end{aligned}
 \end{equation}
 In this case, we can easily perform the analytical continuation by
-substituting $i\omega_m \rightarrow \omega + i\delta$ and we obtain
+substituting $i\omega_m \rightarrow \hslash\omega + i\delta$ and we obtain
 bubble on the real axis in the orbital basis
 %
 \begin{equation}
   \begin{aligned}
-  \chi^0(\bq, \omega) &= - \frac{1}{N} \sum_{\bk} \frac{n_F (E_{\bk + \bq}) - n_F
-    (E_{\bk})}{E_{\bk + \bq} - E_{\bk} - \omega - i\delta}.
+  \chi^0(\bq, \hslash \omega) &= - \frac{1}{N} \sum_{\bk} \frac{n_F (E_{\bk + \bq}) - n_F
+    (E_{\bk})}{E_{\bk + \bq} - E_{\bk} - \hslash \omega - i\delta}.
   \end{aligned}
 \end{equation}
 %

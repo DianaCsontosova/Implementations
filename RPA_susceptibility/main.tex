@@ -169,6 +169,33 @@ to obtain the real part of the bubble on the real frequency axis:
 \end{equation}
 %
 
+The Green's function, which is used for the calculation of bubble, is
+represented by $n \times n$ matrix, where $n$ is given by spin, number
+of orbitals, and number of sites per unit cell. In order to determine the
+spectral function, we use Lehmann representation on the real axis
+%
+\begin{equation}
+  \begin{aligned}
+    \mathfrak{G_{\alpha\beta}}(\bk, E + i\delta) - \mathfrak{G_{\alpha\beta}}(\bk, E - i\delta) &=
+    \int \mathrm{d}E^{\prime} A_{\alpha\beta}(\mathbf{k}, E^{\prime})
+  \left(\frac{1}{E + i\delta - E^{\prime}} - \frac{1}{E - i\delta -
+      E^{\prime}} \right) \\
+  &= -\int \mathrm{d}E^{\prime} A_{\alpha\beta}(\mathbf{k}, E^{\prime})
+  \frac{2i\delta}{(E - E^{\prime})^2 + \delta^2},
+  \end{aligned}
+\end{equation}
+%
+where $\alpha$ and $\beta$ are indices of the matrix element. When the
+limit $\delta \rightarrow 0$ is done, the Lorentzian becomes a delta
+function, and thus, we get the matrix
+element of spectral function as
+%
+\begin{equation}
+A_{\alpha\beta}(\mathbf{k}, E) = - \frac{i}{2\pi}
+  \lim_{\delta\to 0} \left( \mathfrak{G_{\alpha\beta}}(\bk, E -
+    i\delta) - \mathfrak{G_{\alpha\beta}}(\bk, E + i\delta) \right).
+\end{equation}
+
 \newpage
 
 Now, we focus on terms in Eq.~\eqref{eq:final_susc}
@@ -201,17 +228,6 @@ I = \{ A * H \}(\omega) = \mathcal{F}^{-1} \{ A^{\mathrm{FT}}
 $\mathcal{F}^{-1}$ denotes inverse Fourier transform. Hence, instead of direct
 calculation of convolution, we use FFT and IFFT algorithms in the
 code.
-
-Using RPA approximation we can further write spectral function
-$A(\mathbf{k}, E)$ as
-%
-\begin{equation}
-A(\mathbf{k}, E) = - \frac{1}{\pi} \mathrm{Im} (G_{\mathrm{ret}}(\mathbf{k}, E)) =
-\frac{1}{\pi} \frac{-\mathrm{Im}(\Sigma)}{\left( E -
-    \varepsilon_{\mathbf{k}} + \mu - \mathrm{Re}(\Sigma) \right)^2 + (\mathrm{Im}(\Sigma))^2}.
-\end{equation}
-%
-Here, $\Sigma$ marks RPA self-energy.
 
 \bibliography{library}
 
