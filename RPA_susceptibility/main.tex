@@ -135,7 +135,34 @@ eq. 3.5.2):
 \end{equation}
 where the analytical continuation is performed in the last step via the
 substitution $i\omega_m \rightarrow \omega + i\delta$, with $\delta$
-infinitesimal. The imaginary and real parts of the last expression in
+infinitesimal. By performing a substitution $\nu = E^{\prime \prime} - E^{\prime}$ and introducing $B(\bq, \nu)$ we get
+%
+\begin{equation}
+  \begin{aligned}
+    B(\bq, \nu)
+    &=
+    \int
+    \mathrm{d} E'
+    \sum_{\bk} A(\bk, E') 
+    A(\bk + \bq, E' + \nu)
+    \qty[n_F(E') - n_F(E' + \nu) ],
+    \end{aligned}
+\end{equation}
+%
+%
+\begin{equation}
+  \begin{aligned}
+    \chi^0(\bq, \omega)
+    &=
+    - \beta \int
+    \mathrm{d}\nu
+    \frac{B(\bq, \nu)}{\omega - \nu + \mathrm{i}\delta}.
+    \end{aligned}
+\end{equation}
+%
+
+\iffalse
+The imaginary and real parts of the last expression in
 Eq.~\ref{eq:continuation} can be obtained using
 %To extract imaginary part of term in bracket we use Sokhotski–Plemelj
 %theorem
@@ -169,6 +196,7 @@ to obtain the real part of the bubble on the real frequency axis:
   \mathrm{d} \omega' \frac{\Im \chi^0(\bq, \omega)}{\omega' - \omega}.
 \end{equation}
 %
+\fi
 
 The calculation of the spectral function matrix is not as
 straightforward in our case, with finite off diagonal elements, as in
@@ -194,7 +222,7 @@ which gives
 % 
 \begin{equation}
 A(\mathbf{k}, E) = - \frac{i}{2\pi}
-  \lim_{\delta\to 0} \left( \mathfrak{G}(\bk, E -
+  \lim_{\delta\to 0^{+}} \left( \mathfrak{G}(\bk, E -
     i\delta) - \mathfrak{G}(\bk, E + i\delta) \right).
 \end{equation}
 
